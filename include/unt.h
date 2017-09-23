@@ -29,6 +29,6 @@
 #ifndef __UNT_H
 # define __UNT_H
 
-#include "unt/sys/info.h"
+#include "unt/sys.h"
 
 #endif /* !__UNT_H */

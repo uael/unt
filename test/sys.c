@@ -23,12 +23,21 @@
  * SOFTWARE.
  */
 
-/*!@file unt/sys/info.h
- * @author uael
- */
-#ifndef __UNT_SYS_INFO_H
-# define __UCC_SYS_INFO_H
+#include <cute.h>
 
-#include <uty.h>
+#include "unt/sys.h"
 
-#endif /* !__UNT_SYS_INFO_H */
+CUTEST_DATA {
+  i32_t dummy;
+};
+
+CUTEST_SETUP {};
+CUTEST_TEARDOWN {};
+
+i32_t
+main(void) {
+  CUTEST_DATA test = {0};
+
+  (void)test;
+  return EXIT_SUCCESS;
+}

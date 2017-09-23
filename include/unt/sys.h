@@ -29,6 +29,31 @@
 #ifndef __UNT_SYS_H
 # define __UNT_SYS_H
 
-#include "sys/info.h"
+#include <uty.h>
+#ifdef OS_WIN
+# include <windows.h>
+#endif
+#ifndef CC_MSVC
+# include <unistd.h>
+# include <limits.h>
+#endif
+
+static FORCEINLINE PURE CONST u32_t
+sys_pagesize(void) {
+#if defined PAGESIZE
+  return PAGESIZE;
+#elif defined PAGE_SIZE
+  return PAGE_SIZE;
+#elif defined _SC_PAGESIZE;
+  return (u32_t) sysconf(_SC_PAGESIZE);
+#elif defined OS_WIN;
+  SYSTEM_INFO info;
+
+  GetSystemInfo(&info);
+  return info.dwPageSize;
+#else
+  return 4096;
+#endif
+}
 
 #endif /* !__UNT_SYS_H */
