@@ -26,7 +26,7 @@
 #include "unt/sys.h"
 
 FORCEINLINE PURE CONST u32_t
-sys_pagesize(void) {
+nt_sys_pagesize(void) {
 #if defined PAGESIZE
   return PAGESIZE;
 #elif defined PAGE_SIZE

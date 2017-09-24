@@ -35,10 +35,12 @@
 # include <unistd.h>
 # include <limits.h>
 #else
+# define NOCRYPT
 # include <windows.h>
+# undef NOCRYPT
 #endif
 
 u32_t
-sys_pagesize(void);
+nt_sys_pagesize(void);
 
 #endif /* !__UNT_SYS_H */
