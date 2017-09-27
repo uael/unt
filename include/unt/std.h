@@ -23,26 +23,36 @@
  * SOFTWARE.
  */
 
-/*!@file unt/sys.h
+/*!@file unt/std.h
  * @author uael
  */
-#ifndef __UNT_SYS_H
-# define __UNT_SYS_H
+#ifndef __UNT_STD_H
+# define __UNT_STD_H
 
-#include <uty.h>
+#include <ucc.h>
 
-#include "std.h"
+#include <stdlib.h>
+#include <stdarg.h>
+#include <stddef.h>
+#include <stdint.h>
+#include <stdio.h>
 
-#ifndef CC_MSVC
+#if __has_feature(stdalign_h)
+# include <stdalign.h>
+#endif
+
+#if __has_feature(stdatomic_h)
+# include <stdatomic.h>
+#endif
+
+#ifdef OS_UNIX
 # include <unistd.h>
-# include <limits.h>
-#else
+#endif
+
+#ifdef OS_WIN
 # define NOCRYPT
 # include <windows.h>
 # undef NOCRYPT
 #endif
 
-u32_t
-nt_sys_pagesize(void);
-
-#endif /* !__UNT_SYS_H */
+#endif /* !__UNT_STD_H */

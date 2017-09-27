@@ -29,6 +29,7 @@
 #ifndef __UNT_H
 # define __UNT_H
 
+#include "unt/std.h"
 #include "unt/sys.h"
 
 #endif /* !__UNT_H */
