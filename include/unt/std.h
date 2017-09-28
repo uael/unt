@@ -31,18 +31,34 @@
 
 #include <ucc.h>
 
-#include <stdlib.h>
-#include <stdarg.h>
-#include <stddef.h>
-#include <stdint.h>
-#include <stdio.h>
+#ifdef __cplusplus
+# include <cstdlib>
+# include <cstdarg>
+# include <cstddef>
+# include <cstdint>
+# include <cstdio>
+#else
+# include <stdlib.h>
+# include <stdarg.h>
+# include <stddef.h>
+# include <stdint.h>
+# include <stdio.h>
+#endif
 
 #if __has_feature(stdalign_h)
-# include <stdalign.h>
+# ifdef __cplusplus
+#   include <cstdalign>
+# else
+#   include <stdalign.h>
+# endif
 #endif
 
 #if __has_feature(stdatomic_h)
-# include <stdatomic.h>
+# ifdef __cplusplus
+#   include <cstdatomic>
+# else
+#   include <stdatomic.h>
+# endif
 #endif
 
 #ifdef OS_UNIX
@@ -53,6 +69,8 @@
 # define NOCRYPT
 # include <windows.h>
 # undef NOCRYPT
+# include <winnt.h>
+# include <windef.h>
 #endif
 
 #endif /* !__UNT_STD_H */
